@@ -12,9 +12,9 @@ The `portal-io-file` module is a `file` I/O library.
 #### Jitpack
 
 - Add `maven { url "https://jitpack.io" }` repository.
-- Import using `implementation "com.github.stargateoss.portal-io:portal-io-file:0.0.0"`
+- Import using `implementation "com.github.stargateoss.portal-io:portal-io-file:0.1.0"`
 
 #### Local Building
 
 - Build using `./gradlew publishReleasePublicationToMavenLocal`
-- Import using `implementation "dev.stargateoss:portal-io-file:0.0.0"`
+- Import using `implementation "dev.stargateoss:portal-io-file:0.1.0"`
