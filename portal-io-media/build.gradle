@@ -58,7 +58,7 @@ afterEvaluate {
                 from components.release
                 groupId = "dev.stargateoss"
                 artifactId = "portal-io-media"
-                version = "0.0.0"
+                version = "0.1.0"
                 artifact(sourceJar)
             }
         }
