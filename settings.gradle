@@ -1,2 +1,3 @@
 rootProject.name = "portal-io"
 include ":portal-io-file"
+include ":portal-io-media"

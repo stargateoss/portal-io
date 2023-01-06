@@ -1,0 +1,66 @@
+plugins {
+    id "com.android.library"
+    id "maven-publish"
+}
+
+android {
+    namespace "dev.stargateoss.portal.io.media"
+
+    compileSdk project.properties.compileSdkVersion.toInteger()
+
+    defaultConfig {
+        minSdkVersion project.properties.minSdkVersion.toInteger()
+        targetSdkVersion project.properties.targetSdkVersion.toInteger()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+
+    dependencies {
+        implementation project(":portal-io-file")
+    }
+
+
+    publishing {
+        singleVariant("release")
+    }
+}
+
+dependencies {
+    testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.test.ext:junit:1.1.4"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.5.0"
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = "dev.stargateoss"
+                artifactId = "portal-io-media"
+                version = "0.0.0"
+                artifact(sourceJar)
+            }
+        }
+    }
+}
